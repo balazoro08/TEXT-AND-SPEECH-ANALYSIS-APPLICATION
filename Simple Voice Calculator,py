@@ -1,0 +1,31 @@
+import speech_recognition as sr
+
+r = sr.Recognizer()
+
+with sr.Microphone() as source:
+    print("Say: 5 plus 3")
+    audio = r.listen(source)
+
+text = r.recognize_google(audio).lower()
+
+print("You said:", text)
+
+if "plus" in text:
+    numbers = text.split("plus")
+    answer = float(numbers[0]) + float(numbers[1])
+    print("Answer:", answer)
+
+elif "minus" in text:
+    numbers = text.split("minus")
+    answer = float(numbers[0]) - float(numbers[1])
+    print("Answer:", answer)
+
+elif "multiply" in text:
+    numbers = text.split("multiply")
+    answer = float(numbers[0]) * float(numbers[1])
+    print("Answer:", answer)
+
+elif "divide" in text:
+    numbers = text.split("divide")
+    answer = float(numbers[0]) / float(numbers[1])
+    print("Answer:", answer)
